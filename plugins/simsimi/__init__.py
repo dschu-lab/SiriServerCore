@@ -1,12 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Written by Linus Yang <laokongzi@gmail.com>
-# Renewed by dschu <dschu.de>
+# Renewed by dschu <http://github.com/dschu-lab>
 
 from plugin import *
 import requests
 import json
 import re
+
+APPID = APIKeyForAPI("simsimi")
 
 class SimiWorker:
 
@@ -24,7 +26,7 @@ class SimiWorker:
         message = message.encode('utf-8').strip()
         if message != '':
             try:
-                r = requests.get("http://api.simsimi.com/request.p", params={'key': '64dc3942-e06f-4b47-8b9e-34c593409d3e', 'lc': 'de', 'text': message})
+                r = requests.get("http://api.simsimi.com/request.p", params={'key': APPID, 'lc': 'de', 'text': message})
                 
                 
                 return json.loads(r.text)['response']
