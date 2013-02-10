@@ -11,6 +11,9 @@ import logging
 import sys
 
 
+
+
+
 try:    
     from twisted.internet import ssl
     from twisted.internet.protocol import Factory
@@ -210,13 +213,13 @@ def main():
     
     x = logging.getLogger()
     x.setLevel(log_levels[options.logLevel])
-    
+
     if options.logfile != None:
         h = logging.FileHandler(options.logfile)
     else:
         h = logging.StreamHandler()
     
-    f = logging.Formatter(u"%(levelname)s %(message)s")
+    f = logging.Formatter(u"%(asctime)-15s %(levelname)s %(message)s")
     h.setFormatter(f)
     x.addHandler(h)
     
