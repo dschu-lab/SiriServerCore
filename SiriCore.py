@@ -55,7 +55,7 @@ class Siri(LineReceiver):
 
     def connectionLost(self, reason):
         if reason.type == OpenSSL.SSL.Error:
-            self.logger.warning("SSL related error")
+            self.logger.warning("SSL related error from {0}".format(self.peer.host))
             self.logger.warning(reason.value)
         elif reason.type == error.ConnectionLost:
             self.logger.warning("Connection Lost: {0}".format(reason.value))
