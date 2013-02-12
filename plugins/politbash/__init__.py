@@ -12,10 +12,10 @@ from bs4 import BeautifulSoup
 class wissen(Plugin):
 	res = {
         'kaspertheater': {
-            'de-DE': '.*Kaspertheater.*'
+            'de-DE': '(Kaspertheater|Kasperltheater).*'
         },
         'kaspertop': {
-            'de-DE': '.*Best of Kaspertheater.*'
+            'de-DE': '.*Best of (Kaspertheater|Kasperltheater).*'
         }
     }
 
@@ -29,7 +29,7 @@ class wissen(Plugin):
 		self.complete_request()
 
 	@register("de-DE", res['kaspertop']['de-DE'])
-	def kaspertheater(self, speech, language):
+	def kaspertop(self, speech, language):
 		html = urllib.urlopen("http://polit-bash.org/index.php?p=top").read()
 		soup = BeautifulSoup(html)
 		zitat = soup.findAll("p", {"class": "quote"})
