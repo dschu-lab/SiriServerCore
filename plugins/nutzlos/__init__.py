@@ -17,7 +17,7 @@ class nutzlos(Plugin):
         }
     }
 
-	@register("de-DE", res['unnuetzes']['de-DE'])
+	@register("de-DE", res['nutzlos']['de-DE'])
 	def nutzlos_get(self, speech, language):
 		html = urllib.urlopen("http://www.unnuetzes.com/wissen/feed/").read()
 		soup = BeautifulSoup(html)

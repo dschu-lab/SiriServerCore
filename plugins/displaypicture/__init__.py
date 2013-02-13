@@ -16,6 +16,7 @@
 import re
 import urllib2, urllib
 import json
+import random
 
 from plugin import *
 from plugin import __criteria_key__
@@ -38,7 +39,9 @@ class displaypic(Plugin):
         SearchURL = u'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=small|medium|large|xlarge&q=' + str(Query)
         try:
             if language == "de-DE":
-                self.say(u"Hier ist das Bild für "+Title+"...")
+                rep = [u"Hier ist das Bild für "+Title+"...",u"Droggelbecher!",u"Tadaa!",u"Bääm!"]
+                self.say(random.choice(rep))
+                
             else:
                 self.say("Here is the image for "+Title+"...")
             jsonResponse = urllib2.urlopen(SearchURL).read()
